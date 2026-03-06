@@ -13,6 +13,8 @@ export const MetricQueryNameSchema = z.enum([
 	"magic-transit-traffic",
 	"magic-firewall-samples",
 	"network-analytics",
+	"stream-video-playback",
+	"stream-live-inputs",
 	// Zone-level
 	"http-metrics",
 	"adaptive-metrics",
@@ -47,6 +49,8 @@ export const ACCOUNT_LEVEL_QUERIES = [
 	"magic-transit-traffic",
 	"magic-firewall-samples",
 	"network-analytics",
+	"stream-video-playback",
+	"stream-live-inputs",
 ] as const;
 
 /**
@@ -101,6 +105,8 @@ export function isZoneLevelQuery(query: string): query is ZoneLevelQuery {
 
 /**
  * Query types available on free tier accounts.
+ * Note: Stream queries (stream-video-playback, stream-live-inputs) are
+ * intentionally excluded — Cloudflare Stream is a paid product.
  */
 export const FREE_TIER_QUERIES = [
 	"worker-totals",
